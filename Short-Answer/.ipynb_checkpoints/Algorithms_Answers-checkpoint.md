@@ -16,7 +16,8 @@ pseudocode:
 find value of f while minimizing the number of eggs used (both dropped and broken)
 def finding_f:
     
-        
+ #using binary search here is a complexity of O(log(n))--excellent
+ 
 <!-- class BSTNode:
     def __init__(self, value):
         self.value = value
@@ -36,7 +37,7 @@ def finding_f:
                 return False
             return self.right.contains(target) -->
 <!--     
- 
+ #if 
 floors = [] 
      egg_broken = 1
      egg_clean = -1
@@ -46,4 +47,33 @@ floors = []
         if BSTNode contains(target)
             floors.append(target)
    
- 
+ '''
+# Function to get minimum number of trials  
+# needed in worst case with n eggs and k floors  
+def eggDrop(n, k): 
+  
+    # If there are no floors, then no trials 
+    # needed. OR if there is one floor, one 
+    # trial needed. 
+    if (k == 1 or k == 0): 
+        return k 
+  
+    # We need k trials for one egg  
+    # and k floors 
+    if (n == 1): 
+        return k 
+  
+    min = sys.maxsize 
+  
+    # Consider all droppings from 1st  
+    # floor to kth floor and return  
+    # the minimum of these values plus 1. 
+    for x in range(1, k + 1): 
+  
+        res = max(eggDrop(n - 1, x - 1),  
+                  eggDrop(n, k - x)) 
+        if (res < min): 
+            min = res 
+  
+    return min + 1
+'''
